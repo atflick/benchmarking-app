@@ -1,0 +1,44 @@
+
+$light-white:   #cbced2;
+$blue:          #2b5876;
+$purple:        #4e4376;
+$gradient:      linear-gradient(to top, #3b4044, #363f49);
+$gradient2:     linear-gradient(to top, #FFEEEE, #DDEFBB);
+$sea-blue:      linear-gradient(to right, #2b5876, #4e4376);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  background: $light-white;
+  // background: url('../img/bg.jpg') fixed;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+nav {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: $sea-blue;
+  border-bottom: 2px #fff solid;
+}
+
+h1 {
+  font-size: 72px;
+  background: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  color: $blue;
+}

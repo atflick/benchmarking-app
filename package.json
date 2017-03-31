@@ -1,0 +1,28 @@
+{
+  "name": "benchmarking-app",
+  "version": "1.0.0",
+  "description": "# User Stories As a user, I should be able to: - add employers - add health plans to each employer - search for an employer - view all health plans under an employer - compare health plans by sub categories of employers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atflick/benchmarking-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atflick/benchmarking-app/issues"
+  },
+  "homepage": "https://github.com/atflick/benchmarking-app#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.2",
+    "normalize.css": "^6.0.0",
+    "sass": "^0.5.0",
+    "shortid": "^2.2.8"
+  }
+}
