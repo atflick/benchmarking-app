@@ -1,0 +1,79 @@
+.form-style {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 25px 45px;
+  width: 500px;
+  background: #fff;
+  border: 1px solid $charcoal;
+  border-radius: 4px;
+  margin: 0 auto;
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    > div {
+      width: 255px;
+      text-align: left;
+    }
+  }
+  input[type=text] {
+    font-size: 16px;
+    font-family: $body-font;
+    padding: 4px 4px;
+    border: 1px solid $purple;
+    height: 20px;
+    margin-bottom: 8px;
+    width: 245px;
+    border-radius: 2px;
+  }
+  select {
+    font-size: 16px;
+    font-family: $body-font;
+    padding: 4px 4px;
+    border: 1px solid $purple;
+    height: 30px;
+    margin-bottom: 8px;
+    width: 255px;
+    background: #fff;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 2px;
+  }
+
+  input:focus, button:focus, select:focus {
+    outline: none;
+  }
+  h3 {
+    border-bottom: 2px solid $purple;
+  }
+}
+
+button {
+  position: relative;
+  font-family: $body-font;
+  color: $blue;
+  background: $light-white;
+  width: auto;
+  border: 1px solid $charcoal;
+  padding: 5px 8px;
+  font-size: 16px;
+  margin: 5px auto;
+  cursor: pointer;
+  transition: all ease .5s;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: #fff;
+  background: $sea-blue;
+  transition: all ease .3s;
+}
+
+button:active {
+  top: 2px;
+}

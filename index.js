@@ -13,7 +13,35 @@ app.use(parser.json({extended: true}))
 app.use(express.static(__dirname + '/public'))
 
 // Employer Routes
+app.get('/api/employers', (req, res) => {
+  Employer.find({}).then((ers) => {
+    res.json(ers)
+  })
+})
 
+app.get('/api/employers/:id', (req, res) => {
+  Employer.findOne({employer_id: req.params.id}).then((er) => {
+    res.json(er)
+  })
+})
+
+app.post('/api/employers', (req, res) => {
+  Employer.create(req.body).then((er) => {
+    res.json(er)
+  })
+})
+
+app.delete('/api/employers/:id', (req, res) => {
+  Employer.findOneAndRemove({employer_id: req.params.id}).then(() => {
+    res.json({success: true})
+  })
+})
+
+app.put('/api/employers/:id', (req, res) => {
+  Employer.findOneAndUpdate({employer_id: req.params.id}, req.body, {new: true}).then((er) => {
+    res.json(er)
+  })
+})
 
 // Medical Plan Routes
 

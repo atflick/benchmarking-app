@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html data-ng-app="touchstone">
+<html ng-app="touchstone">
   <head>
     <meta charset="utf-8">
-    <title>Touchstone</title>
 
+    <title>Touchstone</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik|Suez+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/177c7bc5cc.css" media="all">
     <link rel="stylesheet" href="css/main.css">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -14,11 +16,29 @@
 
   </head>
   <body>
-  <nav>
-    <h1>Touchstone</h1>
-  </nav>
+    <header>
+      <h1>Touchstone</h1>
+    </header>
+    <main class="site-container">
+      <nav>
+        <div ui-sref="employersNew">
+          <h6><i class="fa fa-user-plus" aria-hidden="true"></i></h6>
+          <h4>Add Employer</h4>
+        </div>
+        <div ui-sref="employersIndex">
+          <h6><i class="fa fa-users" aria-hidden="true"></i></h6>
+          <h4>View Employers</h4>
+        </div>
+        <div ui-sref="medicalIndex">
+          <h6><i class="fa fa-medkit" aria-hidden="true"></i></h6>
+          <h4>View Medical Plans</h4>
+        </div>
+      </nav>
+      <section class="main-section" ui-view>
+      </section>
+    </main>
+    <footer>
 
-  <main data-ui-view></main>
-
+    </footer>
   </body>
 </html>

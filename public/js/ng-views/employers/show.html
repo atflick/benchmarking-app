@@ -1,1 +1,38 @@
-</h2>Show</h2>
+<h2>Show</h2>
+
+<section>
+  <div>
+    <h3>{{vm.employer.name}}</h3>
+  </div>
+  <button ng-click="edit = !edit">Edit</button>
+  <div ng-show="edit">
+    <form class="form-style" ng-submit="vm.update()">
+      <div>
+        <label>Name</label>
+        <label>State</label>
+        <label>Size</label>
+        <label>Industry</label>
+        <label>Region</label>
+      </div>
+      <div>
+        <input type="text" ng-model="vm.employer.name">
+        <select ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.employer.state"></select>
+        <label ng-repeat="size in vm.dropData.sizes">
+          {{size}}
+          <input  type="radio" ng-model="vm.employer.size" ng-value="size" name="size">
+        </label>
+        <label ng-repeat="industry in vm.dropData.industries">
+          {{industry}}
+          <input  type="radio" ng-model="vm.employer.industry" ng-value="industry" name="industry">
+        </label>
+        <label ng-repeat="region in vm.dropData.regions">
+          {{region}}
+          <input  type="radio" ng-model="vm.employer.region" ng-value="region" name="region">
+        </label>
+      </div>
+      <input type="submit" value="Save">
+      <input type="button" value="Delete" ng-click="vm.delete()">
+    </form>
+  </div>
+
+</section>

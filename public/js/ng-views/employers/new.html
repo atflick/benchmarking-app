@@ -1,0 +1,41 @@
+<h2>Add new Employer</h2>
+
+<form class="form-style" ng-submit="vm.createReload()">
+  <div>
+    <h3>Name</h3>
+    <input type="text" ng-model="vm.newEmployer.name">
+  </div>
+  <div>
+    <h3>State</h3>
+    <select ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.newEmployer.state"></select>
+  </div>
+  <div>
+    <h3>Size</h3>
+    <div>
+      <label ng-repeat="size in vm.dropData.sizes">
+        <input  type="radio" ng-model="vm.newEmployer.size" ng-value="size" name="size">
+        {{size}}<br>
+      </label>
+    </div>
+  </div>
+  <div>
+    <h3>Industry</h3>
+    <div>
+      <label ng-repeat="industry in vm.dropData.industries">
+        <input  type="radio" ng-model="vm.newEmployer.industry" ng-value="industry" name="industry">
+        {{industry}}<br>
+      </label>
+    </div>
+  </div>
+  <div>
+    <h3>Region</h3>
+    <div>
+      <label ng-repeat="region in vm.dropData.regions">
+        <input  type="radio" ng-model="vm.newEmployer.region" ng-value="region" name="region">
+        {{region}}<br>
+      </label>
+    </div>
+  </div>
+  <button type="submit">Save and Add Another</button>
+  <button ng-click="vm.createShow()">Save</button>
+</form>
