@@ -20,6 +20,7 @@ angular.module('touchstone')
     '$stateParams',
     '$state',
     'EmployerFactory',
+    'ErMedicalFactory',
     EmployerShowCtrlFunction
   ])
 
@@ -46,8 +47,10 @@ function EmployersNewCtrlFunction($state, EmployerFactory) {
   this.dropData = dropData
 }
 
-function EmployerShowCtrlFunction($stateParams, $state, EmployerFactory) {
+function EmployerShowCtrlFunction($stateParams, $state, EmployerFactory, ErMedicalFactory) {
   this.employer = EmployerFactory.get({id: $stateParams.id})
+  this.medPlans = ErMedicalFactory.query({id: $stateParams.id})
+  console.log(this.medPlans);
   this.update = () => {
     this.employer.$update({id: $stateParams.id}, (er) => {
       // $state.go('employersShow', {id: er.employer_id})

@@ -1,12 +1,29 @@
+.small-form {
+  max-width: 500px;
+  > div > div {
+    width: 255px;
+    text-align: left;
+  }
+}
+
+.big-form {
+  max-width: 600px;
+  > div {
+    > div {
+    width: 200px;
+    text-align: left;
+    }
+  }
+}
+
 .form-style {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   position: relative;
   padding: 25px 45px;
-  width: 500px;
   background: #fff;
-  border: 1px solid $charcoal;
+  border: 1px solid $purple;
   border-radius: 4px;
   margin: 0 auto;
   > div {
@@ -16,21 +33,24 @@
     align-items: center;
     width: 100%;
     margin-bottom: 15px;
-    > div {
-      width: 255px;
-      text-align: left;
-    }
   }
-  input[type=text] {
+  input {
     font-size: 16px;
     font-family: $body-font;
     padding: 4px 4px;
     border: 1px solid $purple;
     height: 20px;
     margin-bottom: 8px;
-    width: 245px;
     border-radius: 2px;
   }
+  input[type=text] {
+    width: 245px;
+  }
+  input[type=number] {
+    width: 60px;
+    padding-left: 20px;
+  }
+
   select {
     font-size: 16px;
     font-family: $body-font;
@@ -51,6 +71,16 @@
   h3 {
     border-bottom: 2px solid $purple;
   }
+}
+
+.dollar-sym {
+  position: relative;
+  font-size: 16px;
+  left: 12px;
+}
+.short-input {
+  width: 86px;
+  margin-left: 9px;
 }
 
 button {

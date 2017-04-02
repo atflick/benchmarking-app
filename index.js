@@ -44,8 +44,43 @@ app.put('/api/employers/:id', (req, res) => {
 })
 
 // Medical Plan Routes
+app.get('/api/medical', (req, res) => {
+  MedicalPlan.find({}).then((plans) => {
+    res.json(plans)
+  })
+})
 
+app.get('/api/employer/medical/:id', (req, res) => {
+  MedicalPlan.find({employer_id: req.params.id}).then((plans) => {
+    res.json(plans)
+  })
+})
 
+app.get('/api/medical/:id', (req, res) => {
+  MedicalPlan.findOne({_id: req.params.id}).then((plan) => {
+    res.json(plan)
+  })
+})
+
+app.post('/api/medical', (req, res) => {
+  MedicalPlan.create(req.body).then((plan) => {
+    res.json(plan)
+  })
+})
+
+app.delete('/api/medical/:id', (req, res) => {
+  MedicalPlan.findOneAndRemove({_id: req.params.id}).then(() => {
+    res.json({success: true})
+  })
+})
+
+app.put('/api/medical/:id', (req, res) => {
+  MedicalPlan.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).then((plan) => {
+    res.json(plan)
+  })
+})
+
+// Angular route
 app.get('*', (req, res) => {
   res.sendfile('./public/index.html')
 })

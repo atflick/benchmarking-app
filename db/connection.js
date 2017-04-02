@@ -11,12 +11,12 @@ var EmployerSchema = new mongoose.Schema(
     industry: String,
     state: String,
     size: String,
-    region: String
+    region: String 
   }
 )
 var MedicalPlanSchema = new mongoose.Schema(
   {
-    plan_id: {
+    _id: {
       type: String,
       'default': shortid.generate
     },

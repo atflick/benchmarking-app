@@ -1,6 +1,6 @@
 <h2>Add new Employer</h2>
 
-<form class="form-style" ng-submit="vm.createReload()">
+<form class="form-style small-form" ng-submit="vm.createReload()">
   <div>
     <h3>Name</h3>
     <input type="text" ng-model="vm.newEmployer.name">
@@ -37,5 +37,5 @@
     </div>
   </div>
   <button type="submit">Save and Add Another</button>
-  <button ng-click="vm.createShow()">Save</button>
+  <button type="button" ng-click="vm.createShow()">Save</button>
 </form>

@@ -1,0 +1,65 @@
+<h2>Add Medical Plan</h2>
+
+<form class="form-style big-form" ng-submit="vm.createReload()">
+  <div>
+    <h3>Plan Type</h3>
+    <div>
+      <select class="short-input" ng-model="vm.newMedPlan.type">
+        <option value="hmo">HMO</option>
+        <option value="ppo">PPO</option>
+        <option value="pos">POS</option>
+        <option value="hdhp">HDHP</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <h3>Deductible - Individual</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.ded_ee"> per year
+    </div>
+  </div>
+  <div>
+    <h3>Deductible - Family</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.ded_f"> per year
+    </div>
+  </div>
+  <div>
+    <h3>Out of Pocket Maximum - Individual</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.oop_ee"> per year
+    </div>
+  </div>
+  <div>
+    <h3>Out of Pocket Maximum - Family</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.oop_f"> per year
+    </div>
+  </div>
+  <div>
+    <h3>Office Visit</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.office"> co-pay
+    </div>
+  </div>
+  <div>
+    <h3>Specialist Visit</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.specialist"> co-pay
+    </div>
+  </div>
+  <div>
+    <h3>Urgent Care</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.uc"> co-pay
+    </div>
+  </div>
+  <div>
+    <h3>Emergency Room</h3>
+    <div>
+      <span class="dollar-sym">$</span><input type="number" ng-model="vm.newMedPlan.er"> co-pay
+    </div>
+  </div>
+  <button type="submit">Save and Add Another</button>
+  <button type="button" ng-click="vm.createShow()">Save</button>
+</form>
