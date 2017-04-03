@@ -32,7 +32,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed $purple;
   }
   input {
     font-size: 16px;
@@ -58,7 +59,6 @@
     border: 1px solid $purple;
     height: 30px;
     margin-bottom: 8px;
-    width: 255px;
     background: #fff;
     border-radius: 2px;
     -webkit-appearance: none;
@@ -69,14 +69,28 @@
     outline: none;
   }
   h3 {
-    border-bottom: 2px solid $purple;
+    // border-bottom: 2px solid $purple;
   }
+
+}
+
+input[type="radio"] {
+  border: 2px solid $purple;
+  margin-right: 5px;
+  background: $purple;
+  padding: 0;
+}
+input[type="radio"]:checked {
+  background: $purple;
 }
 
 .dollar-sym {
   position: relative;
   font-size: 16px;
   left: 12px;
+}
+.long-input {
+  width: 255px;
 }
 .short-input {
   width: 86px;

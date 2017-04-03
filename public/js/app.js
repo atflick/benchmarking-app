@@ -45,16 +45,22 @@ angular
         controller: 'employersShowCtrl',
         controllerAs: 'vm'
       })
+      .state('medicalIndex', {
+        url: '/medical',
+        templateUrl: 'js/ng-views/medical/index.html',
+        controller: 'medicalIndexCtrl',
+        controllerAs: 'vm'
+      })
       .state('medicalNew', {
         url: '/employers/:id/new_medical',
         templateUrl: 'js/ng-views/medical/new.html',
         controller: 'medicalNewCtrl',
         controllerAs: 'vm'
       })
-      .state('medicalShow', {
+      .state('medicalEdit', {
         url: '/employers/:id/medical/:plan_id',
-        templateUrl: 'js/ng-views/medical/show.html',
-        controller: 'medicalShowCtrl',
+        templateUrl: 'js/ng-views/medical/edit.html',
+        controller: 'medicalEditCtrl',
         controllerAs: 'vm'
       })
   }

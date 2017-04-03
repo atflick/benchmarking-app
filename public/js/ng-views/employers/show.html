@@ -1,51 +1,74 @@
-<h2>Show</h2>
 
-<section>
-  <div>
-    <h3>{{vm.employer.name}}</h3>
-  </div>
-  <button ui-sref="medicalNew({id: vm.employer.employer_id})">Add Medical Plan</button>
-  <button ng-click="edit = !edit">Edit</button>
-  <div ng-show="edit">
-    <form class="form-style small-form" ng-submit="vm.createReload()">
-      <div>
-        <h3>Name</h3>
-        <input type="text" ng-model="vm.employer.name">
-      </div>
-      <div>
-        <h3>State</h3>
-        <select ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.employer.state"></select>
-      </div>
-      <div>
-        <h3>Size</h3>
-        <div>
-          <label ng-repeat="size in vm.dropData.sizes">
-            <input  type="radio" ng-model="vm.employer.size" ng-value="size" name="size">
-            {{size}}<br>
-          </label>
-        </div>
-      </div>
-      <div>
-        <h3>Industry</h3>
-        <div>
-          <label ng-repeat="industry in vm.dropData.industries">
-            <input  type="radio" ng-model="vm.employer.industry" ng-value="industry" name="industry">
-            {{industry}}<br>
-          </label>
-        </div>
-      </div>
-      <div>
-        <h3>Region</h3>
-        <div>
-          <label ng-repeat="region in vm.dropData.regions">
-            <input  type="radio" ng-model="vm.employer.region" ng-value="region" name="region">
-            {{region}}<br>
-          </label>
-        </div>
-      </div>
-      <button type="submit">Save and Add Another</button>
-      <button ng-click="vm.createShow()">Save</button>
-    </form>
-  </div>
 
+<section  ng-show="!edit">
+
+  <h2>{{vm.employer.name}}</h2>
+  <div class="centered-container flex-container">
+    <div class="flex-cell-1-2 info-box">
+      <h3>Size:  {{vm.employer.size}} employees</h3>
+      <h3>State:  {{vm.employer.state}}</h3>
+      <h3>Industry:  {{vm.employer.industry}}</h3>
+      <button ng-click="edit = !edit">Edit</button>
+    </div>
+    <div class="flex-cell-1-2 center">
+      <img src="img/{{vm.employer.region}}.svg">
+    </div>
+
+    <div class="flex-cell-1-2 plans">
+      <h3>Current Plans</h3>
+      <div class="sorting-flex sorting-table-borderless">
+        <div class="sorting-row flex-cell-full" ng-repeat="plan in vm.medPlans" ui-sref="medicalEdit({id: vm.employer.employer_id, plan_id: plan._id})">
+          <h4>{{plan.name}}  ({{plan.type.toUpperCase()}})</h4>
+        </div>
+      </div>
+      <button ui-sref="medicalNew({id: vm.employer.employer_id})">Add Medical Plan</button>
+    </div>
+    <div class="flex-cell-1-2 center">
+
+    </div>
+  </div>
+</section>
+
+<section ng-hide="!edit"class="edit-screen" ng-class="{'edit-screen-active' : edit}">
+  <h2 class="center">Edit {{vm.employer.name}}</h2>
+  <form class="form-style small-form" ng-submit="vm.update(); edit = !edit">
+    <h4 class="x" ng-click="edit = !edit"><i class="fa fa-times-circle" aria-hidden="true"></i></h4>
+    <div>
+      <h3>Name</h3>
+      <input type="text" ng-model="vm.employer.name">
+    </div>
+    <div>
+      <h3>State</h3>
+      <select ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.employer.state"></select>
+    </div>
+    <div>
+      <h3>Size</h3>
+      <div>
+        <label ng-repeat="size in vm.dropData.sizes">
+          <input  type="radio" ng-model="vm.employer.size" ng-value="size" name="size">
+          {{size}}<br>
+        </label>
+      </div>
+    </div>
+    <div>
+      <h3>Industry</h3>
+      <div>
+        <label ng-repeat="industry in vm.dropData.industries">
+          <input  type="radio" ng-model="vm.employer.industry" ng-value="industry" name="industry">
+          {{industry}}<br>
+        </label>
+      </div>
+    </div>
+    <div>
+      <h3>Region</h3>
+      <div>
+        <label ng-repeat="region in vm.dropData.regions">
+          <input  type="radio" ng-model="vm.employer.region" ng-value="region" name="region">
+          {{region}}<br>
+        </label>
+      </div>
+    </div>
+    <button type="submit">Save</button>
+    <button ng-click="vm.delete()" type="button">Delete</button>
+  </form>
 </section>

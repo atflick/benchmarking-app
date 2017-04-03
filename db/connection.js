@@ -11,7 +11,7 @@ var EmployerSchema = new mongoose.Schema(
     industry: String,
     state: String,
     size: String,
-    region: String 
+    region: String
   }
 )
 var MedicalPlanSchema = new mongoose.Schema(
@@ -20,6 +20,7 @@ var MedicalPlanSchema = new mongoose.Schema(
       type: String,
       'default': shortid.generate
     },
+    name: String,
     type: String,
     ded_ee: Number,
     ded_f: Number,
@@ -29,7 +30,8 @@ var MedicalPlanSchema = new mongoose.Schema(
     specialist: Number,
     uc: Number,
     er: Number,
-    employer_id: String
+    employer_id: String,
+    employer: Object
   }
 )
 

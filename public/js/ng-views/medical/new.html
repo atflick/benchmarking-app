@@ -1,6 +1,10 @@
-<h2>Add Medical Plan</h2>
+<h2 class="center">Add Medical Plan</h2>
 
 <form class="form-style big-form" ng-submit="vm.createReload()">
+  <div>
+    <h3>Plan Name</h3>
+    <input type="text" ng-model="vm.newMedPlan.name">
+  </div>
   <div>
     <h3>Plan Type</h3>
     <div>

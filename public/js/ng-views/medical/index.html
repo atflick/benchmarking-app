@@ -1,0 +1,40 @@
+<h2>All Medical Plans</h2>
+
+<button type="button" ng-click="vm.compare()">Compare Plans</button>
+<section class="sorting-table sorting-flex">
+  <div class="sorting-header sorting-flex">
+    <div class="er-name">
+      <h3>Plan Name</h3>
+    </div>
+    <div class="er-region">
+      <h3>Type</h3>
+    </div>
+    <div class="er-name">
+      <h3>Employer</h3>
+    </div>
+    <div class="er-size">
+      <h3>Size</h3>
+    </div>
+    <div class="er-state">
+      <h3>Compare</h3>
+    </div>
+  </div>
+
+  <div class="sorting-row sorting-flex" ng-repeat="plan in vm.medPlans">
+    <div class="er-name">
+      <h3>{{plan.name}}</h3>
+    </div>
+    <div class="er-region">
+      <h3>{{plan.type.toUpperCase()}}</h3>
+    </div>
+    <div class="er-name">
+      <h3>{{plan.employer.name}}</h3>
+    </div>
+    <div class="er-size">
+      <h3>{{plan.employer.size}}</h3>
+    </div>
+    <div class="er-state center">
+      <input type="checkbox" ng-model="plan.checked" ng-change="vm.checkChanged(plan)" ng-disabled="vm.numChecked == vm.limit && !plan.checked"/>
+    </div>
+  </div>
+</section>

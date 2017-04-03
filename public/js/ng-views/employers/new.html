@@ -1,4 +1,4 @@
-<h2>Add new Employer</h2>
+<h2 class="center">Add New Employer</h2>
 
 <form class="form-style small-form" ng-submit="vm.createReload()">
   <div>
@@ -7,7 +7,7 @@
   </div>
   <div>
     <h3>State</h3>
-    <select ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.newEmployer.state"></select>
+    <select class="long-input" ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.newEmployer.state"></select>
   </div>
   <div>
     <h3>Size</h3>

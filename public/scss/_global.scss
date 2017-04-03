@@ -1,5 +1,5 @@
 
-$light-white:   #cbced2;
+$light-white:   #f0f0f0;
 $blue:          #2b5876;
 $purple:        #4e4376;
 $charcoal:      #323539;
@@ -161,6 +161,16 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 20px auto;
+  font-size: 34px;
   color: $blue;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.center {
+  text-align: center;
 }
