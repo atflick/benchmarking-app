@@ -3,7 +3,19 @@
   <h2>All Medical Plans  <i ng-click="filterBox = !filterBox" class="filter fa fa-filter" aria-hidden="true"></i></h2>
 
   <section class="filter-box" ng-class="{'filter-box-active':  filterBox}">
-    <input type="text">
+    <input type="text" placeholder="Filter by Plan Name" ng-model="filterByName.name">
+    <br>
+    <input type="text" placeholder="Filter by Employer Name" ng-model="filterByName.employer.name">
+    <br>
+    <label ng-repeat="type in vm.dropData.plan_types">
+      <input type="checkbox" ng-click="vm.updateFilter(type)" />
+      {{type}}
+    </label>
+    <br>
+    <label ng-repeat="size in vm.dropData.sizes">
+      <input type="checkbox" ng-click="vm.updateFilter(size)" />
+      {{size}}
+    </label>
   </section>
 
   <section class="sorting-table sorting-flex">
@@ -25,7 +37,7 @@
       </div>
     </div>
 
-    <div class="sorting-row sorting-flex" ng-repeat="plan in vm.medPlans | orderBy : vm.propertyName : vm.reverse">
+    <div class="sorting-row sorting-flex" ng-repeat="plan in vm.medPlans | orderBy : vm.propertyName : vm.reverse | filter : vm.filterBy | filter : filterByName">
       <div class="er-name">
         <h3>{{plan.name}}</h3>
       </div>

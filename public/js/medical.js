@@ -28,12 +28,11 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
     plan.checked ? this.numChecked++ : this.numChecked--
   }
 
+  // Bar Graph features
   this.barData = {
     labels: ['Office Visit Co-Pay', 'Specialist Visit Co-Pay', 'Urgent Care Co-Pay', 'Emergency Room Co-Pay'],
     series: []
   };
-
-
 
   this.compare = () => {
     this.barData.series = []
@@ -45,7 +44,6 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
       planInfo.push(plan.uc)
       planInfo.push(plan.er)
       this.barData.series.push(planInfo)
-      console.log(this.barData.series);
     })
   }
 
@@ -78,12 +76,39 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
     }]
   ]
 
+  // sorting functionality
   this.propertyName = 'name';
   this.reverse = false;
   this.sortBy = (propertyName) => {
     this.reverse = (this.propertyName === propertyName) ? !this.reverse : false;
     this.propertyName = propertyName;
   }
+
+  // filtering functionality for plan list
+  this.filters = []
+  this.dropData = dropData
+  this.updateFilter = (filter) => {
+    let x = 0;
+    if (this.filters.indexOf(filter)  === -1) {
+      return this.filters.push(filter)
+    } else {
+      x = this.filters.indexOf(filter)
+      this.filters.splice(x, 1)
+    }
+  }
+
+  this.filterBy = (plan) => {
+    if (this.filters.length === 0) {
+      return plan
+    } else if (this.filters.indexOf(plan.employer.size) !== -1) {
+      return plan
+    }  else if (this.filters.indexOf(plan.type) !== -1) {
+      return plan
+    }  else {
+      return
+    }
+  }
+
 }
 
 function MedicalNewCtrlFunction($stateParams, $state, MedicalFactory, EmployerFactory) {
@@ -115,7 +140,7 @@ function MedicalEditCtrlFunction($stateParams, $state, MedicalFactory, EmployerF
   }
   this.delete = () => {
     this.medPlan.$delete({id: $stateParams.plan_id}).then(() => {
-      $state.go('employersShow', {}, {id: $stateParams.id})
+      $state.go('employersShow', {id: $stateParams.id})
     })
   }
 }

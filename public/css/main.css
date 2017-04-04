@@ -135,20 +135,21 @@ button:focus {
   font-size: 30px; }
 
 .filter-box {
-  max-width: 860px;
+  max-width: 880px;
   border: 1px solid #4e4376;
   height: 0px;
   opacity: 0;
   transition: all .5s ease;
-  padding: 0px 20px !important;
-  margin: 0 auto; }
+  padding: 0px 10px;
+  margin: 0 auto;
+  overflow: hidden; }
 
 .filter-box-active {
-  height: 100px;
+  height: auto;
   opacity: 1;
   margin: 0 auto 20px auto;
   border-radius: 4px;
-  padding: 20px; }
+  padding: 10px; }
 
 .flex-container {
   width: 100%;
@@ -232,16 +233,6 @@ button:focus {
     width: 100%;
     margin-bottom: 10px;
     border-bottom: 1px dashed #4e4376; }
-  .form-style input {
-    font-size: 16px;
-    font-family: "Rubik", sans-serif;
-    padding: 4px 4px;
-    border: 1px solid #4e4376;
-    height: 20px;
-    margin-bottom: 8px;
-    border-radius: 2px; }
-  .form-style input[type=text] {
-    width: 245px; }
   .form-style input[type=number] {
     width: 60px;
     padding-left: 20px; }
@@ -256,8 +247,21 @@ button:focus {
     border-radius: 2px;
     -webkit-appearance: none;
     -webkit-border-radius: 2px; }
-  .form-style input:focus, .form-style button:focus, .form-style select:focus {
-    outline: none; }
+
+input:focus, button:focus, select:focus {
+  outline: none; }
+
+input {
+  font-size: 16px;
+  font-family: "Rubik", sans-serif;
+  padding: 4px 4px;
+  border: 1px solid #4e4376;
+  height: 20px;
+  margin-bottom: 8px;
+  border-radius: 2px; }
+
+input[type=text] {
+  width: 245px; }
 
 input[type="radio"] {
   border: 2px solid #4e4376;

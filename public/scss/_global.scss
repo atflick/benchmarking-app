@@ -188,19 +188,20 @@ button:focus {
 }
 
 .filter-box {
-  max-width: 860px;
+  max-width: 880px;
   border: 1px solid $purple;
   height: 0px;
   opacity: 0;
   transition: all .5s ease;
-  padding: 0px 20px !important;
+  padding: 0px 10px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .filter-box-active {
-  height: 100px;
+  height: auto;
   opacity: 1;
   margin: 0 auto 20px auto;
   border-radius: 4px;
-  padding: 20px;
+  padding: 10px;
 }

@@ -1,4 +1,24 @@
-<h2>All Employers</h2>
+<h2>All Employers <i ng-click="filterBox = !filterBox" class="filter fa fa-filter" aria-hidden="true"></i></h2>
+
+<section class="filter-box" ng-class="{'filter-box-active':  filterBox}">
+  <input type="text" placeholder="Filter by Employer Name" ng-model="filterByName.name">
+  <br>
+  <label ng-repeat="size in vm.dropData.sizes">
+    <input type="checkbox" ng-click="vm.updateFilter(size)" />
+    {{size}}
+  </label>
+  <br>
+  <label ng-repeat="region in vm.dropData.regions">
+    <input type="checkbox" ng-click="vm.updateFilter(region)" />
+    {{region}}
+  </label>
+  <br>
+  <label ng-repeat="industry in vm.dropData.industries">
+    <input type="checkbox" ng-click="vm.updateFilter(industry)" />
+    {{industry}}
+  </label>
+
+</section>
 
 <section class="sorting-table sorting-flex">
   <div class="sorting-header sorting-flex">
@@ -19,7 +39,7 @@
     </div>
   </div>
 
-  <div ui-sref="employersShow({id: er.employer_id})" class="sorting-row sorting-flex" ng-repeat="er in vm.employers | orderBy : vm.propertyName: vm.reverse">
+  <div ui-sref="employersShow({id: er.employer_id})" class="sorting-row sorting-flex" ng-repeat="er in vm.employers | orderBy : vm.propertyName: vm.reverse | filter : vm.filterBy | filter : filterByName">
     <div class="er-name">
       <h3>{{er.name}}</h3>
     </div>

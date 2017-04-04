@@ -35,18 +35,7 @@
     margin-bottom: 10px;
     border-bottom: 1px dashed $purple;
   }
-  input {
-    font-size: 16px;
-    font-family: $body-font;
-    padding: 4px 4px;
-    border: 1px solid $purple;
-    height: 20px;
-    margin-bottom: 8px;
-    border-radius: 2px;
-  }
-  input[type=text] {
-    width: 245px;
-  }
+
   input[type=number] {
     width: 60px;
     padding-left: 20px;
@@ -65,13 +54,28 @@
     -webkit-border-radius: 2px;
   }
 
-  input:focus, button:focus, select:focus {
-    outline: none;
-  }
+
   h3 {
     // border-bottom: 2px solid $purple;
   }
 
+}
+
+input:focus, button:focus, select:focus {
+  outline: none;
+}
+
+input {
+  font-size: 16px;
+  font-family: $body-font;
+  padding: 4px 4px;
+  border: 1px solid $purple;
+  height: 20px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+input[type=text] {
+  width: 245px;
 }
 
 input[type="radio"] {
