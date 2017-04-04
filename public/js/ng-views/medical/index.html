@@ -1,40 +1,57 @@
-<h2>All Medical Plans</h2>
+<section ng-show="!graphs">
 
-<button type="button" ng-click="vm.compare()">Compare Plans</button>
-<section class="sorting-table sorting-flex">
-  <div class="sorting-header sorting-flex">
-    <div class="er-name">
-      <h3>Plan Name</h3>
+  <h2>All Medical Plans  <i ng-click="filterBox = !filterBox" class="filter fa fa-filter" aria-hidden="true"></i></h2>
+
+  <section class="filter-box" ng-class="{'filter-box-active':  filterBox}">
+    <input type="text">
+  </section>
+
+  <section class="sorting-table sorting-flex">
+    <div class="sorting-header sorting-flex">
+      <div class="er-name">
+        <h3 ng-click="vm.sortBy('name')">Plan Name <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'name')"></i></h3>
+      </div>
+      <div class="er-state">
+        <h3 ng-click="vm.sortBy('type')">Type <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'type')"></i></h3>
+      </div>
+      <div class="er-name">
+        <h3 ng-click="vm.sortBy('employer.name')">Employer <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'employer.name')"></i></h3>
+      </div>
+      <div class="er-size">
+        <h3 ng-click="vm.sortBy('employer.size')">Size <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'employer.size')"></i></h3>
+      </div>
+      <div class="er-region">
+        <h3 class="center" ng-click="vm.sortBy('checked')">Compare <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'checked')"></i></h3>
+      </div>
     </div>
-    <div class="er-region">
-      <h3>Type</h3>
+
+    <div class="sorting-row sorting-flex" ng-repeat="plan in vm.medPlans | orderBy : vm.propertyName : vm.reverse">
+      <div class="er-name">
+        <h3>{{plan.name}}</h3>
+      </div>
+      <div class="er-state">
+        <h3>{{plan.type.toUpperCase()}}</h3>
+      </div>
+      <div class="er-name">
+        <h3>{{plan.employer.name}}</h3>
+      </div>
+      <div class="er-size">
+        <h3>{{plan.employer.size}}</h3>
+      </div>
+      <div class="er-region center">
+        <input type="checkbox" ng-model="plan.checked" ng-change="vm.checkChanged(plan)" ng-disabled="vm.numChecked == vm.limit && !plan.checked"/>
+      </div>
     </div>
-    <div class="er-name">
-      <h3>Employer</h3>
-    </div>
-    <div class="er-size">
-      <h3>Size</h3>
-    </div>
-    <div class="er-state">
-      <h3>Compare</h3>
-    </div>
+  </section>
+  <div class="center">
+      <button type="button" ng-click="vm.compare(); graphs = !graphs" ng-show="!graphs">Compare Plans</button>
   </div>
+</section>
 
-  <div class="sorting-row sorting-flex" ng-repeat="plan in vm.medPlans">
-    <div class="er-name">
-      <h3>{{plan.name}}</h3>
-    </div>
-    <div class="er-region">
-      <h3>{{plan.type.toUpperCase()}}</h3>
-    </div>
-    <div class="er-name">
-      <h3>{{plan.employer.name}}</h3>
-    </div>
-    <div class="er-size">
-      <h3>{{plan.employer.size}}</h3>
-    </div>
-    <div class="er-state center">
-      <input type="checkbox" ng-model="plan.checked" ng-change="vm.checkChanged(plan)" ng-disabled="vm.numChecked == vm.limit && !plan.checked"/>
-    </div>
+<section class="chart-container" ng-class="{'hide' : !graphs}">
+  <div>
+    <button type="button" ng-click="vm.compare(); graphs = !graphs">Select Plans</button>
+
+    <chartist class="ct-chart ct-major-twelfth" chartist-data="vm.barData" chartist-chart-type="Bar" chartist-chart-options="vm.barOptions" chartist-responsive-options="vm.barResponsiveOptions"></chartist>
   </div>
 </section>

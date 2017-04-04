@@ -1,7 +1,10 @@
+
+
 angular
   .module('touchstone', [
     'ui.router',
-    'ngResource'
+    'ngResource',
+    angularChartist
   ])
   .config([
     '$stateProvider',

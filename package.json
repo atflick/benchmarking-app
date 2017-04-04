@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/atflick/benchmarking-app#readme",
   "dependencies": {
+    "angular": "^1.6.4",
+    "angular-chartist.js": "^4.3.1",
     "body-parser": "^1.17.1",
+    "chartist": "^0.10.1",
     "express": "^4.15.2",
     "mongoose": "^4.9.2",
     "normalize.css": "^6.0.0",

@@ -3,23 +3,23 @@
 <section class="sorting-table sorting-flex">
   <div class="sorting-header sorting-flex">
     <div class="er-name">
-      <h3>Employer Name</h3>
+      <h3 ng-click="vm.sortBy('name')">Employer Name <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'name')"></i></h3>
     </div>
     <div class="er-size">
-      <h3>Size</h3>
+      <h3 ng-click="vm.sortBy('size')">Size <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'size')"></i></h3>
     </div>
     <div class="er-state">
-      <h3>State</h3>
+      <h3 ng-click="vm.sortBy('state')">State <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'state')"></i></h3>
     </div>
     <div class="er-region">
-      <h3>Region</h3>
+      <h3 ng-click="vm.sortBy('region')">Region <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'region')"></i></h3>
     </div>
     <div class="er-industry">
-      <h3>Industry</h3>
+      <h3 ng-click="vm.sortBy('industry')">Industry <i class="fa fa-angle-down" aria-hidden="true" ng-class="{'sortorder': vm.reverse}" ng-show="(vm.propertyName === 'industry')"></i></h3>
     </div>
   </div>
 
-  <div ui-sref="employersShow({id: er.employer_id})" class="sorting-row sorting-flex" ng-repeat="er in vm.employers">
+  <div ui-sref="employersShow({id: er.employer_id})" class="sorting-row sorting-flex" ng-repeat="er in vm.employers | orderBy : vm.propertyName: vm.reverse">
     <div class="er-name">
       <h3>{{er.name}}</h3>
     </div>

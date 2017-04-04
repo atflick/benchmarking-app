@@ -27,9 +27,62 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
   this.checkChanged = (plan) => {
     plan.checked ? this.numChecked++ : this.numChecked--
   }
+
+  this.barData = {
+    labels: ['Office Visit Co-Pay', 'Specialist Visit Co-Pay', 'Urgent Care Co-Pay', 'Emergency Room Co-Pay'],
+    series: []
+  };
+
+
+
   this.compare = () => {
+    this.barData.series = []
     this.plansToCompare = this.medPlans.filter((plan) => plan.checked)
-    console.log(this.plansToCompare);
+    this.plansToCompare.forEach((plan) => {
+      let planInfo = []
+      planInfo.push(plan.office)
+      planInfo.push(plan.specialist)
+      planInfo.push(plan.uc)
+      planInfo.push(plan.er)
+      this.barData.series.push(planInfo)
+      console.log(this.barData.series);
+    })
+  }
+
+  this.barOptions = {
+    seriesBarDistance: 25,
+    axisY: {
+      // offset: 10,
+      labelInterpolationFnc: function(value) {
+        return '$' + value;
+      }
+    }
+  };
+
+  this.barResponsiveOptions = [
+    ['screen and (min-width: 641px) and (max-width: 1024px)', {
+      seriesBarDistance: 10,
+      axisX: {
+        labelInterpolationFnc: function(value) {
+          return value;
+        }
+      }
+    }],
+    ['screen and (max-width: 640px)', {
+      seriesBarDistance: 5,
+      axisX: {
+        labelInterpolationFnc: function(value) {
+          return value[0];
+        }
+      }
+    }]
+  ]
+
+  this.propertyName = 'name';
+  this.reverse = false;
+  this.sortBy = (propertyName) => {
+    this.reverse = (this.propertyName === propertyName) ? !this.reverse : false;
+    this.propertyName = propertyName;
   }
 }
 

@@ -30,6 +30,13 @@ angular.module('touchstone')
 
 function EmployersIndexCtrlFunction($state, EmployerFactory) {
   this.employers = EmployerFactory.query()
+
+  this.propertyName = 'name';
+  this.reverse = false;
+  this.sortBy = (propertyName) => {
+    this.reverse = (this.propertyName === propertyName) ? !this.reverse : false;
+    this.propertyName = propertyName;
+  }
 }
 
 function EmployersNewCtrlFunction($state, EmployerFactory) {

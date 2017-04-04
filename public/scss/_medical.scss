@@ -1,0 +1,19 @@
+.hide {
+  height: 0;
+  overflow: hidden;
+  * {
+    transition: all 1s ease;
+  }
+}
+
+.chart-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  line {
+    transition: all 3s ease;
+  }
+}
+
+.sortorder {
+  transform: rotate(180deg);
+}

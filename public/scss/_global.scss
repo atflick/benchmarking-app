@@ -174,3 +174,33 @@ button:focus {
 .center {
   text-align: center;
 }
+
+
+.filter {
+  cursor: pointer;
+  line-height: 34px;
+  font-size: 26px;
+}
+
+.filter:hover {
+  line-height: 34px;
+  font-size: 30px;
+}
+
+.filter-box {
+  max-width: 860px;
+  border: 1px solid $purple;
+  height: 0px;
+  opacity: 0;
+  transition: all .5s ease;
+  padding: 0px 20px !important;
+  margin: 0 auto;
+}
+
+.filter-box-active {
+  height: 100px;
+  opacity: 1;
+  margin: 0 auto 20px auto;
+  border-radius: 4px;
+  padding: 20px;
+}
