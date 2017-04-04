@@ -36,6 +36,7 @@ main {
       min-height: calc(100% - 200px); } }
 
 nav {
+  z-index: 1;
   display: flex;
   background: #323539;
   width: 100%; }
@@ -272,6 +273,10 @@ input[type="radio"] {
 input[type="radio"]:checked {
   background: #4e4376; }
 
+input[type=checkbox] {
+  margin: 0;
+  height: 14px; }
+
 .dollar-sym {
   position: relative;
   font-size: 16px;
@@ -416,8 +421,64 @@ button:active {
   margin: 0 auto; }
   .chart-container line {
     transition: all 3s ease; }
+  .chart-container h2 {
+    display: inline-block; }
+  .chart-container button {
+    float: right;
+    margin-right: 30px; }
 
 .sortorder {
   transform: rotate(180deg); }
+
+.chart-key {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px; }
+  .chart-key label {
+    margin-right: 15px;
+    display: flex;
+    align-content: center; }
+
+.small-square {
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+  display: inline-block; }
+
+.list-screen, .chart-screen {
+  top: 0;
+  padding: 30px 0;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  transition: 1s all ease; }
+
+.list-screen {
+  position: relative;
+  right: 0;
+  opacity: 1;
+  height: auto; }
+  .list-screen button {
+    float: right; }
+
+.list-screen-closed {
+  right: -100%;
+  opacity: 0;
+  position: absolute; }
+
+.chart-screen {
+  left: -100%;
+  opacity: 0;
+  position: absolute;
+  height: 0px; }
+
+.chart-screen-open {
+  left: 0;
+  opacity: 1;
+  position: relative;
+  height: auto; }
 
 /*# sourceMappingURL=main.css.map */

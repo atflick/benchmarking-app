@@ -7,6 +7,8 @@ let dropData = {
 
 }
 
+let colors = ["#2b5876", "#49535A", "#2a6875", "#464776", "#0062A3", "#323539"]
+
 angular.module('touchstone')
   .controller('employersIndexCtrl', [
     '$state',

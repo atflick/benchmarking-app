@@ -27,23 +27,34 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
   this.checkChanged = (plan) => {
     plan.checked ? this.numChecked++ : this.numChecked--
   }
+  this.colors = colors
 
   // Bar Graph features
   this.barData = {
     labels: ['Office Visit Co-Pay', 'Specialist Visit Co-Pay', 'Urgent Care Co-Pay', 'Emergency Room Co-Pay'],
-    series: []
-  };
+    series: [],
 
+  }
+
+  this.barTwoData = {
+    labels: ['Deductible - Individual', 'Deductible - Family', 'Plan Maximum - Individual', 'Plan Maximum - Family'],
+    series: [],
+
+  }
+
+  this.chartEmployers = []
+  // everytime someone clicks compare, this function grabs each employer that is selected
+  // and pushes the data to the series arrays for each bar graph
   this.compare = () => {
-    this.barData.series = []
+    this.barData.series = [], this.barTwoData.series = [], this.chartEmployers = []
     this.plansToCompare = this.medPlans.filter((plan) => plan.checked)
     this.plansToCompare.forEach((plan) => {
-      let planInfo = []
-      planInfo.push(plan.office)
-      planInfo.push(plan.specialist)
-      planInfo.push(plan.uc)
-      planInfo.push(plan.er)
+      this.chartEmployers.push(`${plan.employer.name} ${plan.type.toUpperCase()}`)
+      let planInfo = [], planInfoTwo = []
+      planInfo.push(plan.office, plan.specialist, plan.uc, plan.er)
       this.barData.series.push(planInfo)
+      planInfoTwo.push(plan.ded_ee, plan.ded_f, plan.oop_ee, plan.oop_f)
+      this.barTwoData.series.push(planInfoTwo)
     })
   }
 
@@ -55,7 +66,17 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
         return '$' + value;
       }
     }
-  };
+  }
+  this.barTwoOptions = {
+    seriesBarDistance: 25,
+    // horizontalBars: true,
+    axisY: {
+      // offset: 10,
+      labelInterpolationFnc: function(value) {
+        return '$' + value;
+      }
+    }
+  }
 
   this.barResponsiveOptions = [
     ['screen and (min-width: 641px) and (max-width: 1024px)', {
@@ -84,7 +105,8 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
     this.propertyName = propertyName;
   }
 
-  // filtering functionality for plan list
+  // everytime checkbox is clicked this function runs and either adds/removes from
+  // the filters array which is
   this.filters = []
   this.dropData = dropData
   this.updateFilter = (filter) => {
@@ -96,7 +118,8 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
       this.filters.splice(x, 1)
     }
   }
-
+  // every ng-repeat iteration checks the plan to see if values match with whats
+  // in the filters array
   this.filterBy = (plan) => {
     if (this.filters.length === 0) {
       return plan

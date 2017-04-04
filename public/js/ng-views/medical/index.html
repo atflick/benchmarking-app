@@ -1,6 +1,7 @@
-<section ng-show="!graphs">
+<section class="list-screen" ng-class="{'list-screen-closed' : graphs}">
 
-  <h2>All Medical Plans  <i ng-click="filterBox = !filterBox" class="filter fa fa-filter" aria-hidden="true"></i></h2>
+  <h2>All Medical Plans  <i ng-click="filterBox = !filterBox" class="filter fa fa-filter" aria-hidden="true"></i>
+    <button type="button" ng-click="vm.compare(); graphs = !graphs" ng-show="!graphs">Compare Plans <i class="fa fa-arrow-right" aria-hidden="true"></i></button></h2>
 
   <section class="filter-box" ng-class="{'filter-box-active':  filterBox}">
     <input type="text" placeholder="Filter by Plan Name" ng-model="filterByName.name">
@@ -56,14 +57,26 @@
     </div>
   </section>
   <div class="center">
-      <button type="button" ng-click="vm.compare(); graphs = !graphs" ng-show="!graphs">Compare Plans</button>
+
   </div>
 </section>
 
-<section class="chart-container" ng-class="{'hide' : !graphs}">
-  <div>
-    <button type="button" ng-click="vm.compare(); graphs = !graphs">Select Plans</button>
-
+<section class="chart-screen" ng-class="{'chart-screen-open' : graphs}" >
+  <div class="chart-container">
+    <h2>Service Co-Pay Comparison</h2>
+    <button type="button" ng-click="vm.compare(); graphs = !graphs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Select Plans</button>
     <chartist class="ct-chart ct-major-twelfth" chartist-data="vm.barData" chartist-chart-type="Bar" chartist-chart-options="vm.barOptions" chartist-responsive-options="vm.barResponsiveOptions"></chartist>
+    <div class="chart-key">
+      <label ng-repeat="employer in vm.chartEmployers track by $index">
+        <div class="small-square" ng-style="{'background-color': vm.colors[$index]}"></div>
+        {{employer}}</label>
+    </div>
+    <h2>Plan Accumulators Comparison</h2>
+    <chartist class="ct-chart ct-major-twelfth" chartist-data="vm.barTwoData" chartist-chart-type="Bar" chartist-chart-options="vm.barTwoOptions" chartist-responsive-options="vm.barResponsiveOptions"></chartist>
+    <div class="chart-key">
+      <label ng-repeat="employer in vm.chartEmployers track by $index">
+        <div class="small-square" ng-style="{'background-color': vm.colors[$index]}"></div>
+        {{employer}}</label>
+    </div>
   </div>
 </section>
