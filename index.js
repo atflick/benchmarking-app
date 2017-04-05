@@ -6,7 +6,8 @@ const mongoose = require('./db/connection.js')
 const Employer = mongoose.model('Employer')
 const MedicalPlan = mongoose.model('MedicalPlan')
 
-app.set('port', process.env.PORT || 3001)
+
+app.set('port', process.env.MONGOLAB_URI || 3001)
 
 app.use('/assets', express.static('public'))
 app.use(parser.json({extended: true}))
