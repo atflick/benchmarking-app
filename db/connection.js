@@ -37,6 +37,6 @@ var MedicalPlanSchema = new mongoose.Schema(
 
 mongoose.model('Employer', EmployerSchema)
 mongoose.model('MedicalPlan', MedicalPlanSchema)
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/touchstone')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/touchstone')
 
 module.exports = mongoose
