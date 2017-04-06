@@ -16,16 +16,16 @@ app.use(parser.json({extended: true}))
 app.use(express.static(__dirname + '/public'))
 
 
-Employer.remove({}).then(()=> {
-  Employer.collection.insert(EmployerSeeds).then(() => {
-    process.exit()
-  })
-})
-MedicalPlan.remove({}).then(()=> {
-  MedicalPlan.collection.insert(MedicalSeeds).then(() => {
-    process.exit()
-  })
-})
+// Employer.remove({}).then(()=> {
+//   Employer.collection.insert(EmployerSeeds).then(() => {
+//     process.exit()
+//   })
+// })
+// MedicalPlan.remove({}).then(()=> {
+//   MedicalPlan.collection.insert(MedicalSeeds).then(() => {
+//     process.exit()
+//   })
+// })
 
 
 
