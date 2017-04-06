@@ -14,8 +14,7 @@ app.set('port', process.env.PORT || 3001)
 app.use('/assets', express.static('public'))
 app.use(parser.json({extended: true}))
 app.use(express.static(__dirname + '/public'))
-Employer.remove({})
-MedicalPlan.remove({})
+
 
 // Employer.remove({}).then(()=> {
 //   Employer.collection.insert(EmployerSeeds).then(() => {
@@ -106,3 +105,6 @@ app.get('*', (req, res) => {
 app.listen(app.get('port'), () => {
   console.log('App running');
 })
+
+Employer.remove({})
+MedicalPlan.remove({})
