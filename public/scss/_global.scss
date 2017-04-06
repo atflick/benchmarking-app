@@ -32,6 +32,9 @@ body {
   background: $charcoal;
 }
 header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   background: $sea-blue;
   border-bottom: 4px solid #fff;
   width: 100%;
@@ -41,6 +44,13 @@ header {
   }
   @media (min-width: $screen-sm-min) {
     height: 100px;
+  }
+  h1 {
+    display: inline-block;
+  }
+  img {
+    height: 50px;
+    margin: 0 15px;
   }
 }
 

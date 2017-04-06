@@ -23,8 +23,9 @@
       </div>
       <button ui-sref="medicalNew({id: vm.employer.employer_id})"><i class="fa fa-plus" aria-hidden="true"></i> Add Medical Plan</button>
     </div>
-    <div class="flex-cell-1-2 center">
-
+    <div class="flex-cell-1-2 center flex-cont-vertical-center">
+      <button ui-sref="medicalCompare(({id: vm.employer.employer_id}))">Compare Plans <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</button>
     </div>
   </div>
 </section>
@@ -39,7 +40,10 @@
     </div>
     <div>
       <h3>State</h3>
-      <select class="long-input" ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.employer.state"></select>
+      <label>
+        <select class="long-input" ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.employer.state"></select>
+        <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
+      </label>
     </div>
     <div>
       <h3>Size</h3>

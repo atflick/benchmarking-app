@@ -61,7 +61,7 @@
   </div>
 </section>
 
-<section class="chart-screen" ng-class="{'chart-screen-open' : graphs}" >
+<section class="chart-screen" ng-class="{'chart-screen-closed' : !graphs}" >
   <div class="chart-container">
     <h2>Service Co-Pay Comparison</h2>
     <button type="button" ng-click="vm.compare(); graphs = !graphs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Select Plans</button>

@@ -1,0 +1,62 @@
+[
+{
+"_id": "58de69ac4cf9967b7ca08ff5",
+"name": "The GBJ Companies",
+"state": "CA",
+"size": "51-99",
+"industry": "Technology",
+"region": "Mid-West",
+"__v": 0,
+"employer_id": "Bk43t1n3l"
+},
+{
+"_id": "58de6bcd4cf9967b7ca08ff6",
+"name": "General Assembly DC",
+"state": "DC",
+"size": "2-50",
+"industry": "Other",
+"region": "Mid-Atlantic",
+"__v": 0,
+"employer_id": "ryICs122l"
+},
+{
+"_id": "58e168b135f1818a824f8cc8",
+"state": "CA",
+"name": "JP Morgan",
+"size": "250+",
+"industry": "Professional Services",
+"region": "West",
+"__v": 0,
+"employer_id": "r1cndy16l"
+},
+{
+"_id": "58e168db35f1818a824f8cca",
+"name": "Pepsi Co",
+"state": "CO",
+"size": "100-249",
+"industry": "Manufacturing/Construction",
+"region": "Mid-West",
+"__v": 0,
+"employer_id": "SyQkY1J6e"
+},
+{
+"_id": "58e168fd35f1818a824f8ccc",
+"name": "Vector Tech",
+"industry": "Technology",
+"size": "51-99",
+"region": "Mid-Atlantic",
+"__v": 0,
+"state": "MD",
+"employer_id": "SJSZFk1Tl"
+},
+{
+"_id": "58e3febcd22a019d5ccb5097",
+"name": "Suite Dezigns",
+"state": "VA",
+"size": "2-50",
+"industry": "Professional Services",
+"region": "Mid-Atlantic",
+"__v": 0,
+"employer_id": "BJH6CdZ6l"
+}
+]

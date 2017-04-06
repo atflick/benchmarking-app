@@ -57,6 +57,13 @@ app.get('/api/employer/medical/:id', (req, res) => {
   })
 })
 
+app.get('/api/medical/:type/:category/:subcategory', (req, res) => {
+
+  MedicalPlan.find({type: req.params.type, [req.params.category]: req.params.subcategory}).then((plan) => {
+    res.json(plan)
+  })
+})
+
 app.get('/api/medical/:id', (req, res) => {
   MedicalPlan.findOne({_id: req.params.id}).then((plan) => {
     res.json(plan)

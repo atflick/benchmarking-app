@@ -27,6 +27,14 @@ angular.module('touchstone')
     'ErMedicalFactory',
     EmployerShowCtrlFunction
   ])
+  .controller('medicalCompareCtrl', [
+    '$stateParams',
+    '$state',
+    'EmployerFactory',
+    'ErMedicalFactory',
+    'CategoryFactory',
+    MedicalCompareCtrlFunction
+  ])
 
 
 function EmployersIndexCtrlFunction($state, EmployerFactory) {
@@ -64,7 +72,6 @@ function EmployersIndexCtrlFunction($state, EmployerFactory) {
       return
     }
   }
-
 }
 
 function EmployersNewCtrlFunction($state, EmployerFactory) {
@@ -96,4 +103,127 @@ function EmployerShowCtrlFunction($stateParams, $state, EmployerFactory, ErMedic
     })
   }
   this.dropData = dropData
+}
+
+function MedicalCompareCtrlFunction($stateParams, $state, EmployerFactory, ErMedicalFactory, CategoryFactory) {
+  this.activePlan = {}
+  this.sizeData = {}
+  this.industryData = {}
+  this.regionData = {}
+  this.chartEmployers = []
+  this.colors = colors
+  this.employer = EmployerFactory.get({id: $stateParams.id})
+  this.medPlans = ErMedicalFactory.query({id: $stateParams.id}, (res) => {
+    this.activePlan = res[0]
+    this.updateData()
+  })
+
+  this.setActivePlan = () => {
+    this.updateData()
+  }
+
+  this.updateData = (callback) => {
+    CategoryFactory.query({
+      type: this.activePlan.type,
+      category: "employer.size",
+      subcategory: this.employer.size
+    }, (res) => {
+      this.sizeData = new MedicalPlanData(res)
+      console.log("size data:", this.sizeData);
+      CategoryFactory.query({
+        type: this.activePlan.type,
+        category: "employer.industry",
+        subcategory: this.employer.industry
+      }, (res) => {
+        this.industryData = new MedicalPlanData(res)
+        console.log("industry data:",this.industryData);
+        CategoryFactory.query({
+          type: this.activePlan.type,
+          category: "employer.region",
+          subcategory: this.employer.region
+        }, (res) => {
+          this.regionData = new MedicalPlanData(res)
+          console.log("region:", this.regionData);
+          this.updateGraphData(this.sizeData, this.industryData, this.regionData)
+          this.chartEmployers = [this.activePlan.name, this.employer.size, this.employer.industry, this.employer.region]
+        })
+      })
+    })
+  }
+
+  this.setActivePlan()
+  this.barData = {
+    labels: ['Office Visit Co-Pay', 'Specialist Visit Co-Pay', 'Urgent Care Co-Pay', 'Emergency Room Co-Pay'],
+    series: [],
+
+  }
+
+  this.barTwoData = {
+    labels: ['Deductible - Individual', 'Deductible - Family', 'Plan Maximum - Individual', 'Plan Maximum - Family'],
+    series: [],
+
+  }
+
+  this.updateGraphData = (sizeData, industryData, regionData) => {
+    this.barData.series = [], this.barTwoData.series = []
+    let plansArr = [this.activePlan, sizeData, industryData, regionData]
+    plansArr.forEach((plan) => {
+      let singlePlanArr = []
+      singlePlanArr.push(plan.office, plan.specialist, plan.uc, plan.er)
+      this.barData.series.push(singlePlanArr)
+      singlePlanArr = []
+      singlePlanArr.push(plan.ded_ee, plan.ded_f, plan.oop_ee, plan.oop_f)
+      this.barTwoData.series.push(singlePlanArr)
+    })
+    console.log(this.barData.series);
+  }
+
+  this.barOptions = {
+    seriesBarDistance: 25,
+    axisY: {
+      // offset: 10,
+      labelInterpolationFnc: function(value) {
+        return '$' + value;
+      }
+    }
+  }
+  this.barTwoOptions = {
+    seriesBarDistance: 25,
+    // horizontalBars: true,
+    axisY: {
+      // offset: 10,
+      labelInterpolationFnc: function(value) {
+        return '$' + value;
+      }
+    }
+  }
+
+  this.barResponsiveOptions = [
+    ['screen and (min-width: 641px) and (max-width: 1024px)', {
+      seriesBarDistance: 10,
+      axisX: {
+        labelInterpolationFnc: function(value) {
+          return value;
+        }
+      }
+    }],
+    ['screen and (max-width: 640px)', {
+      seriesBarDistance: 5,
+      axisX: {
+        labelInterpolationFnc: function(value) {
+          return value[0];
+        }
+      }
+    }]
+  ]
+
+  this.events = {
+    draw: function(obj) {
+      console.log(obj);
+    }
+  }
+
+  this.dropData = dropData
+
+
 }

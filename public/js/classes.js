@@ -1,17 +1,24 @@
-let plans = [
-  {deductible: 300},
-  {deductible: 500},
-  {deductible: 300},
-  {deductible: 1000},
-  {deductible: 500}
-]
+
 
 
 class MedicalPlanData {
   constructor(data) {
-    this.deductibles = []
-    data.forEach((plan) => this.deductibles.push(plan.deductible))
-    this.averageDeductible = this.average(this.deductibles)
+    this.ded_ee = this.dataSetter('ded_ee', data)
+    this.ded_f = this.dataSetter('ded_f', data)
+    this.oop_ee = this.dataSetter('oop_ee', data)
+    this.oop_f = this.dataSetter('oop_f', data)
+    this.office = this.dataSetter('office', data)
+    this.specialist = this.dataSetter('specialist', data)
+    this.uc = this.dataSetter('uc', data)
+    this.er = this.dataSetter('er', data)
+  }
+
+  dataSetter(key, data) {
+    let allVals = []
+    data.forEach((item) => {
+      allVals.push(item[key])
+    })
+    return this.average(allVals)
   }
 
   average(arr) {

@@ -11,6 +11,9 @@ body {
   background: #323539; }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   background: linear-gradient(to right, #2b5876, #4e4376);
   border-bottom: 4px solid #fff;
   width: 100%;
@@ -21,6 +24,11 @@ header {
   @media (min-width: 800px) {
     header {
       height: 100px; } }
+  header h1 {
+    display: inline-block; }
+  header img {
+    height: 50px;
+    margin: 0 15px; }
 
 main {
   width: 100%;
@@ -237,20 +245,10 @@ button:focus {
   .form-style input[type=number] {
     width: 60px;
     padding-left: 20px; }
-  .form-style select {
-    font-size: 16px;
-    font-family: "Rubik", sans-serif;
-    padding: 4px 4px;
-    border: 1px solid #4e4376;
-    height: 30px;
-    margin-bottom: 8px;
-    background: #fff;
-    border-radius: 2px;
-    -webkit-appearance: none;
-    -webkit-border-radius: 2px; }
 
 input:focus, button:focus, select:focus {
-  outline: none; }
+  outline: none;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px -1px 5px rgba(0, 0, 0, 0.2); }
 
 input {
   font-size: 16px;
@@ -265,17 +263,42 @@ input[type=text] {
   width: 245px; }
 
 input[type="radio"] {
-  border: 2px solid #4e4376;
+  height: 15px;
+  width: 15px;
+  border: 2px solid #323539;
   margin-right: 5px;
-  background: #4e4376;
+  background-color: #323539;
   padding: 0; }
 
 input[type="radio"]:checked {
-  background: #4e4376; }
+  background-color: #4e4376; }
+
+input[type="radio"]:focus {
+  box-shadow: none; }
 
 input[type=checkbox] {
   margin: 0;
   height: 14px; }
+
+select {
+  position: relative;
+  z-index: 2;
+  font-size: 16px;
+  font-family: "Rubik", sans-serif;
+  padding: 4px 4px;
+  border: 1px solid #4e4376;
+  height: 30px;
+  margin-bottom: 8px;
+  margin-right: -13px;
+  background: transparent;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 2px;
+  border-radius: 2px; }
+  select + i {
+    position: relative;
+    left: -15px;
+    top: -3px; }
 
 .dollar-sym {
   position: relative;
@@ -450,16 +473,15 @@ button:active {
 
 .list-screen, .chart-screen {
   top: 0;
-  padding: 30px 0;
-  height: auto;
   width: 100%;
   overflow: hidden;
-  transition: 1s all ease; }
+  padding: 0;
+  opacity: 1;
+  position: relative;
+  transition: 1s opacity ease; }
 
 .list-screen {
-  position: relative;
   right: 0;
-  opacity: 1;
   height: auto; }
   .list-screen button {
     float: right; }
@@ -467,18 +489,24 @@ button:active {
 .list-screen-closed {
   right: -100%;
   opacity: 0;
-  position: absolute; }
+  position: absolute;
+  padding: 30px; }
 
 .chart-screen {
+  left: 0;
+  height: 900px; }
+
+.chart-screen-closed {
   left: -100%;
   opacity: 0;
   position: absolute;
-  height: 0px; }
+  padding: 30px;
+  height: 0px;
+  transition: 1s height ease; }
 
-.chart-screen-open {
-  left: 0;
-  opacity: 1;
-  position: relative;
-  height: auto; }
+.compare-container select {
+  width: auto;
+  padding-right: 30px;
+  margin-bottom: 30px; }
 
 /*# sourceMappingURL=main.css.map */

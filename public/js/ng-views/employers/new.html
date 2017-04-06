@@ -7,7 +7,10 @@
   </div>
   <div>
     <h3>State</h3>
-    <select class="long-input" ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.newEmployer.state"></select>
+    <label>
+      <select class="long-input" ng-options="state for state in vm.dropData.states" placeholder="State" ng-model="vm.newEmployer.state"></select>
+      <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
+    </label>
   </div>
   <div>
     <h3>Size</h3>

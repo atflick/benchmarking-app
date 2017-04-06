@@ -97,6 +97,12 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
     }]
   ]
 
+  this.events = {
+    draw: function(obj) {
+      console.log(obj);
+    }
+  }
+
   // sorting functionality
   this.propertyName = 'name';
   this.reverse = false;

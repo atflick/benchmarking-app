@@ -16,6 +16,7 @@
 
     <script src="js/angular-chartist.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/classes.js"></script>
 
     <script src="js/employers.js"></script>
     <script src="js/medical.js"></script>
@@ -23,6 +24,7 @@
   </head>
   <body>
     <header>
+      <img src="img/touchstone-logo.png" alt="">
       <h1>Touchstone</h1>
     </header>
     <main>
@@ -33,11 +35,11 @@
         </div>
         <div ui-sref="employersIndex">
           <h6><i class="fa fa-users" aria-hidden="true"></i></h6>
-          <h4>View Employers</h4>
+          <h4>All Employers</h4>
         </div>
         <div ui-sref="medicalIndex">
           <h6><i class="fa fa-medkit" aria-hidden="true"></i></h6>
-          <h4>View Medical Plans</h4>
+          <h4>Medical Plans</h4>
         </div>
       </nav>
       <section class="main-section" ui-view>
