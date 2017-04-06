@@ -30,6 +30,7 @@ app.use(express.static(__dirname + '/public'))
 
 
 // Employer Routes
+
 app.get('/api/employers', (req, res) => {
   Employer.find({}).then((ers) => {
     res.json(ers)
@@ -73,6 +74,13 @@ app.get('/api/employer/medical/:id', (req, res) => {
   })
 })
 
+app.get('/api/medical/:type/:category/:subcategory', (req, res) => {
+
+  MedicalPlan.find({type: req.params.type, [req.params.category]: req.params.subcategory}).then((plan) => {
+    res.json(plan)
+  })
+})
+
 app.get('/api/medical/:id', (req, res) => {
   MedicalPlan.findOne({_id: req.params.id}).then((plan) => {
     res.json(plan)
@@ -105,6 +113,3 @@ app.get('*', (req, res) => {
 app.listen(app.get('port'), () => {
   console.log('App running');
 })
-
-Employer.remove({})
-MedicalPlan.remove({})
