@@ -89,9 +89,14 @@ app.put('/api/medical/:id', (req, res) => {
 })
 
 // Angular route
+
+app.get('', (req, res) => {
+  res.sendfile('./public/index.html')
+})
 app.get('*', (req, res) => {
   res.sendfile('./public/index.html')
 })
+
 
 app.listen(app.get('port'), () => {
   console.log('App running');

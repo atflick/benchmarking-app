@@ -3,25 +3,34 @@
 <section class="chart-container compare-container">
   <h2>Compare Plans</h2>
   <div class="flex-container">
-    <label>
-      <select ng-model="vm.activePlan"  ng-options="plan.name for plan in vm.medPlans" ng-change="vm.setActivePlan()"></select>
-      <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
-    </label>
-
-    <label>
-      <select ng-model="vm.employer.size"  ng-options="size for size in vm.dropData.sizes" ng-change="vm.setActivePlan()"></select>
-      <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
-    </label>
-
-    <label>
-      <select ng-model="vm.employer.industry"  ng-options="industry for industry in vm.dropData.industries" ng-change="vm.setActivePlan()"></select>
-      <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
-    </label>
-
-    <label>
-      <select ng-model="vm.employer.region"  ng-options="region for region in vm.dropData.regions" ng-change="vm.setActivePlan()"></select>
-      <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
-    </label>
+    <div>
+      <h3>{{vm.activePlan.employer.name}}</h3>
+      <label>
+        <select ng-model="vm.activePlan"  ng-options="plan.name for plan in vm.medPlans" ng-change="vm.setActivePlan()"></select>
+        <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
+      </label>
+    </div>
+    <div>
+      <h3>Size</h3>
+      <label>
+        <select ng-model="vm.employer.size"  ng-options="size for size in vm.dropData.sizes" ng-change="vm.setActivePlan()"></select>
+        <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
+      </label>
+    </div>
+    <div>
+      <h3>Industry</h3>
+      <label>
+        <select ng-model="vm.employer.industry"  ng-options="industry for industry in vm.dropData.industries" ng-change="vm.setActivePlan()"></select>
+        <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
+      </label>
+    </div>
+    <div>
+      <h3>Region</h3>
+      <label>
+        <select ng-model="vm.employer.region"  ng-options="region for region in vm.dropData.regions" ng-change="vm.setActivePlan()"></select>
+        <i class=" select-arrow fa fa-sort-desc" aria-hidden="true"></i>
+      </label>
+    </div>
   </div>
   <h2>Service Co-Pay Comparison ({{vm.activePlan.type.toUpperCase()}})</h2>
   <chartist class="ct-chart ct-major-twelfth" chartist-data="vm.barData" chartist-chart-type="Bar" chartist-chart-options="vm.barOptions" chartist-responsive-options="vm.barResponsiveOptions"></chartist>

@@ -178,6 +178,13 @@ button:focus {
       background: linear-gradient(to right, #2b5876, #4e4376);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; }
+  .welcome > h3 {
+    line-height: 26px;
+    text-align: center;
+    color: #2b5876;
+    padding: 0 130px 30px 130px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #fff; }
   .welcome h4 {
     width: 80%;
     color: #2b5876;

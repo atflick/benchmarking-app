@@ -10,7 +10,7 @@
     <br>
     <label ng-repeat="type in vm.dropData.plan_types">
       <input type="checkbox" ng-click="vm.updateFilter(type)" />
-      {{type}}
+      {{type.toUpperCase()}}
     </label>
     <br>
     <label ng-repeat="size in vm.dropData.sizes">

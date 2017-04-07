@@ -3,7 +3,7 @@ let dropData = {
   sizes: ["2-50", "51-99", "100-249", "250+"],
   industries: ["Non-Profit/Association", "Professional Services", "Technology", "Manufacturing/Construction", "Other"],
   regions: ["Mid-Atlantic", "Mid-West", "Northeast", "West", "South"],
-  plan_types: ["HMO", "PPO", "POS", "HDHP"]
+  plan_types: ["hmo", "ppo", "pos", "hdhp"]
 
 }
 

@@ -129,9 +129,7 @@ function MedicalIndexCtrlFunction($state, MedicalFactory) {
   this.filterBy = (plan) => {
     if (this.filters.length === 0) {
       return plan
-    } else if (this.filters.indexOf(plan.employer.size) !== -1) {
-      return plan
-    }  else if (this.filters.indexOf(plan.type) !== -1) {
+    } else if (this.filters.indexOf(plan.employer.size) !== -1 || this.filters.indexOf(plan.type) !== -1) {
       return plan
     }  else {
       return

@@ -238,6 +238,14 @@ button:focus {
       -webkit-text-fill-color: transparent;
     }
   }
+  > h3 {
+    line-height: 26px;
+    text-align: center;
+    color: $blue;
+    padding:  0 130px 30px 130px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #fff;
+  }
   h4 {
     width: 80%;
     color: $blue;
